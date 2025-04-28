@@ -1,0 +1,46 @@
+# Dipendenze
+/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ambiente
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Build e output
+/dist
+/build
+
+# File di log
+logs
+*.log
+
+# File di sistema operativo
+.DS_Store
+Thumbs.db
+
+# Directory di upload (tranne la directory stessa)
+/uploads/*
+!/uploads/.gitkeep
+
+# File temporanei
+*.tmp
+*.temp
+.cache
+
+# IDE e editor
+/.idea
+/.vscode
+*.swp
+*.swo
+
+# Test coverage
+/coverage
+.nyc_output
+
+# Altri file locali
+*.local 
