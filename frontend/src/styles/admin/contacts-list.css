@@ -1,0 +1,543 @@
+/* Stile per la lista dei messaggi di contatto nell'area admin */
+.contacts-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+/* Header */
+.contacts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 1.5rem;
+}
+
+.contacts-header-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contacts-header-title h2 {
+  margin: 0;
+  color: var(--admin-dark);
+}
+
+.unread-badge {
+  background-color: #e74c3c;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: inline-block;
+  font-weight: 600;
+}
+
+/* Statistiche */
+.contacts-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  min-width: 80px;
+  background-color: #f5f5f5;
+}
+
+.stat-box.unread {
+  background-color: #feecdc;
+  color: #c05621;
+}
+
+.stat-box.responded {
+  background-color: #def7ec;
+  color: #059669;
+}
+
+.stat-box.recent {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* Azioni */
+.contacts-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filter-controls span {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  color: #555;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: #eee;
+}
+
+.filter-btn.active {
+  background-color: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Tabella messaggi */
+.contacts-table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.contacts-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: #555;
+  background-color: #f9fafb;
+  border-bottom: 2px solid #eaeaea;
+  font-size: 0.85rem;
+}
+
+.contacts-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eaeaea;
+  color: #333;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.contact-row:hover {
+  background-color: #f9fafb;
+}
+
+.contact-row.unread {
+  font-weight: 600;
+  background-color: rgba(231, 76, 60, 0.05);
+}
+
+.contact-row.read {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.contact-row.responded {
+  background-color: rgba(39, 174, 96, 0.05);
+}
+
+/* Celle specifiche */
+.status-cell {
+  width: 60px;
+  text-align: center;
+}
+
+.status-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.status-badge.unread {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.status-badge.read {
+  background-color: #3498db;
+  color: white;
+}
+
+.status-badge.responded {
+  background-color: #27ae60;
+  color: white;
+}
+
+.status.unread {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.status.read {
+  color: #3498db;
+  font-weight: 600;
+}
+
+.status.responded {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.actions-cell {
+  width: 140px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  position: relative;
+  transition: all 0.2s;
+  margin-left: 0.25rem;
+}
+
+.action-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/* Tooltip personalizzato visibile al passaggio del mouse */
+.action-btn span.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  background-color: #000;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+/* Mostra il tooltip al passaggio del mouse */
+.action-btn:hover span.tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.action-btn.view-btn {
+  color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.action-btn.view-btn:hover {
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+.action-btn.read-btn {
+  color: #3498db;
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.action-btn.read-btn:hover {
+  background-color: rgba(52, 152, 219, 0.2);
+}
+
+.action-btn.respond-btn {
+  color: #059669;
+  background-color: rgba(5, 150, 105, 0.1);
+}
+
+.action-btn.respond-btn:hover {
+  background-color: rgba(5, 150, 105, 0.2);
+}
+
+.action-btn.delete-btn {
+  color: #dc2626;
+  background-color: rgba(220, 38, 38, 0.1);
+}
+
+.action-btn.delete-btn:hover {
+  background-color: rgba(220, 38, 38, 0.2);
+}
+
+/* Paginazione */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eaeaea;
+}
+
+.pagination-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-btn:not(:disabled):hover {
+  background-color: #e6e6e6;
+}
+
+.pagination-info {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Caricamento */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: #6b7280;
+  gap: 1rem;
+}
+
+.loading-container svg {
+  font-size: 2rem;
+  color: #2563eb;
+}
+
+/* Errore */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: #dc2626;
+  gap: 1rem;
+  text-align: center;
+}
+
+.error-container svg {
+  font-size: 2rem;
+}
+
+/* Contenitore vuoto */
+.empty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  color: #6b7280;
+  border: 1px dashed #d1d5db;
+  border-radius: 6px;
+}
+
+/* Dettaglio contatto */
+.contact-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.contact-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 1rem;
+}
+
+.contact-detail-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.contact-detail-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.contact-detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #4b5563;
+  min-width: 100px;
+}
+
+.detail-value a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.detail-value a:hover {
+  text-decoration: underline;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status.unread {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.status.responded {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.contact-detail-message {
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.contact-detail-message h4 {
+  background-color: #f9fafb;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  font-size: 1rem;
+  color: #4b5563;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.message-content {
+  padding: 1rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.contact-detail-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eaeaea;
+}
+
+/* Stile per il contenitore degli stati */
+.status-container {
+  display: flex;
+  gap: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contacts-header, .contacts-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .contacts-stats {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .contacts-actions {
+    gap: 15px;
+  }
+  
+  .filter-controls, .filter-buttons {
+    width: 100%;
+  }
+  
+  .filter-buttons {
+    justify-content: space-between;
+  }
+  
+  .contact-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .contacts-table th:nth-child(3), 
+  .contacts-table td:nth-child(3) {
+    display: none;
+  }
+} 

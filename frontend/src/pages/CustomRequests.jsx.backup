@@ -1,0 +1,8 @@
+import React from 'react';
+import CustomRequestsComponent from '../components/custom-requests';
+
+const CustomRequests = () => {
+  return <CustomRequestsComponent />;
+};
+
+export default CustomRequests;

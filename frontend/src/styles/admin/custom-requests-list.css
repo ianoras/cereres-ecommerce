@@ -1,0 +1,829 @@
+/* Stile per la lista delle richieste personalizzate nell'area admin */
+.custom-requests-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-top: 20px;
+}
+
+/* Contenitore principale dell'area admin */
+.admin-page-container {
+  padding-top: 5px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Titolo principale della pagina admin */
+.admin-page-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.custom-requests-content {
+  width: 100%;
+}
+
+/* Header e azioni */
+.requests-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filter-controls span {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.filter-select {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 0.9rem;
+}
+
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Tabella richieste */
+.requests-table-container {
+  overflow-x: auto;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.requests-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.requests-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: #555;
+  background-color: #f9fafb;
+  border-bottom: 2px solid #eaeaea;
+  font-size: 0.85rem;
+}
+
+.requests-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eaeaea;
+  color: #333;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.request-row {
+  transition: background-color 0.2s;
+}
+
+.request-row:hover {
+  background-color: #f9fafb;
+}
+
+/* Stile per le righe con notifiche non lette */
+.request-row.has-notifications {
+  background-color: rgba(231, 76, 60, 0.05);
+  position: relative;
+}
+
+.request-row.has-notifications:hover {
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* Indicatore di notifica */
+.notification-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #e74c3c;
+  border-radius: 50%;
+  margin-left: 8px;
+  vertical-align: middle;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(231, 76, 60, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+  }
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 80px;
+}
+
+/* Dettaglio richiesta */
+.request-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.request-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.request-detail-header h3 {
+  margin: 0;
+  color: var(--admin-dark);
+}
+
+.request-detail-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.request-detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.detail-section {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 1.25rem;
+  border: 1px solid #eaeaea;
+}
+
+.detail-section h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: var(--admin-dark);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  background-color: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-label {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.detail-value {
+  font-size: 0.95rem;
+}
+
+.detail-content {
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+/* Prodotto di riferimento */
+.product-reference {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: white;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #eaeaea;
+}
+
+.product-reference img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.product-reference h5 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+}
+
+.product-reference p {
+  margin: 0;
+  color: var(--admin-primary);
+  font-weight: 600;
+}
+
+/* Allegati */
+.attachments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.attachment-item {
+  padding: 0.75rem;
+  background-color: white;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.attachment-item a {
+  color: #3498db;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.attachment-item a:hover {
+  text-decoration: underline;
+}
+
+/* Preventivo */
+.quote-info {
+  background-color: white;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #eaeaea;
+}
+
+/* Azioni amministrative */
+.admin-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.action-form {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid #eaeaea;
+}
+
+.action-form h5 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.form-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.form-group {
+  margin-bottom: 0.75rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Conversazione */
+.conversation-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.messages-list {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
+
+.message-item {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  position: relative;
+  max-width: 85%;
+  clear: both;
+}
+
+.admin-message {
+  background-color: #e3f2fd;
+  float: right;
+  margin-left: 15%;
+  border-top-right-radius: 0;
+}
+
+.client-message {
+  background-color: #eeeeee;
+  float: left;
+  margin-right: 15%;
+  border-top-left-radius: 0;
+}
+
+.message-header {
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.message-content {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #333;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+.message-time {
+  font-size: 0.8em;
+  color: #777;
+}
+
+.message-attachments {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.attachments-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.attachment-item button {
+  font-size: 0.85em;
+}
+
+/* Clear fix per il floating degli elementi */
+.messages-list::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Stili per il form di invio messaggi */
+.send-message-container {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.file-inputs-container {
+  margin: 10px 0;
+}
+
+/* Paginazione */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.pagination-btn {
+  padding: 0.5rem 1rem;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.pagination-btn:not(:disabled):hover {
+  background-color: #e0e0e0;
+}
+
+.pagination-info {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Loading spinner */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--admin-primary);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  color: #666;
+}
+
+/* Error container */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+  text-align: center;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: 8px;
+}
+
+.error-container svg {
+  font-size: 2rem;
+  color: var(--admin-danger);
+}
+
+/* Empty container */
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  text-align: center;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  border: 1px dashed #ddd;
+}
+
+/* Tooltip per le azioni */
+.action-btn {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  position: relative;
+  transition: all 0.2s;
+  margin-left: 0.25rem;
+}
+
+.action-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-actions {
+    grid-template-columns: 1fr;
+  }
+  
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .requests-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .filter-controls {
+    width: 100%;
+  }
+  
+  .filter-select {
+    flex: 1;
+  }
+  
+  .requests-table th:nth-child(1),
+  .requests-table td:nth-child(1),
+  .requests-table th:nth-child(5),
+  .requests-table td:nth-child(5) {
+    display: none;
+  }
+}
+
+/* Stili per le notifiche */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  color: white;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.notification-success {
+  background-color: #27ae60;
+}
+
+.notification-error {
+  background-color: #e74c3c;
+}
+
+.notification-info {
+  background-color: #3498db;
+}
+
+.notification-warning {
+  background-color: #f39c12;
+}
+
+.close-notification {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.close-notification:hover {
+  opacity: 1;
+}
+
+/* Stile per l'header con badge notifiche */
+.section-header-with-notifications {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.section-header-with-notifications h2 {
+  margin: 0;
+}
+
+/* Stile per il badge delle notifiche */
+.notification-badge-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 15px;
+}
+
+.notification-badge {
+  background-color: #ff4757;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  min-width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.notification-badge-text {
+  font-size: 0.85rem;
+  margin-left: 8px;
+  color: #555;
+}
+
+.notification-details {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 5px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 200px;
+  z-index: 100;
+  display: none;
+  border: 1px solid #eaeaea;
+}
+
+.notification-badge-container:hover .notification-details {
+  display: block;
+}
+
+.notification-detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.notification-detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.notification-detail-count {
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.notification-detail-label {
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Stili per gli allegati nei messaggi */
+.message-attachments {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.attachment-wrapper {
+  margin-bottom: 5px;
+}
+
+.message-attachment {
+  max-width: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.attachment-image-container {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.attachment-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.attachment-link {
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.download-link {
+  color: #3498db;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.download-link:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
+
+.attachment-icon {
+  margin-right: 8px;
+  color: #666;
+}
+
+.attachment-fallback {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.attachment-filename {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fallback-content {
+  padding: 15px;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin-top: 5px;
+}
+
+.fallback-content span {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #666;
+} 

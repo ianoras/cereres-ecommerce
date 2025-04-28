@@ -1,0 +1,521 @@
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.navbar.scrolled {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 101;
+}
+
+.logo-container {
+    overflow: hidden;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.transparent-container {
+    height: 60px;
+    width: 60px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.scrolled-container {
+    height: 45px;
+    width: 45px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.navbar.scrolled .logo h1 {
+    color: var(--color-accent);
+    text-shadow: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid transparent;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.navbar.scrolled .nav-links a {
+    color: var(--color-text);
+    text-shadow: none;
+}
+
+.login-btn {
+    padding: 0.5rem 1.2rem;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled .login-btn {
+    border: 1px solid var(--color-primary);
+    color: var(--color-text);
+}
+
+.login-btn:hover {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.nav-links a:hover {
+    border-bottom: 2px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* Stili per il menu del profilo */
+.profile-menu-container {
+    position: relative;
+}
+
+.profile-menu-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    position: relative;
+}
+
+.dropdown-icon {
+    font-size: 0.8rem;
+    margin-left: 0.25rem;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 220px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    z-index: 200;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    transform: rotate(45deg);
+}
+
+.profile-dropdown li {
+    padding: 0;
+    margin: 0;
+}
+
+.profile-dropdown a,
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.7rem 1rem;
+    color: var(--color-text) !important;
+    font-size: 0.9rem;
+    text-shadow: none !important;
+    transition: background-color 0.2s;
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: none !important;
+}
+
+.profile-dropdown a:hover,
+.logout-btn:hover {
+    background-color: #f5f5f5;
+    color: var(--color-primary) !important;
+    border-bottom: none !important;
+}
+
+.logout-btn {
+    color: #e74c3c !important;
+}
+
+.logout-btn:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 2px;
+    margin: 5px auto;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled .bar {
+    background-color: var(--color-text);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        flex-direction: column;
+        background-color: white;
+        padding: 2rem;
+        transition: 0.3s;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        height: 100vh;
+    }
+    
+    .nav-links.active {
+        left: 0;
+    }
+    
+    .nav-links a {
+        color: var(--color-text);
+        text-shadow: none;
+    }
+    
+    .profile-dropdown {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        margin-top: 10px;
+        padding: 0;
+        display: block;
+        animation: none;
+        opacity: 1;
+    }
+    
+    .profile-dropdown::before {
+        display: none;
+    }
+    
+    .profile-dropdown a,
+    .logout-btn {
+        padding-left: 2rem;
+    }
+}
+
+/* Stile per il contenitore del carrello e dropdown */
+.cart-container {
+  position: relative;
+}
+
+/* Stile per il link del carrello */
+.cart-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 0.75rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Stile per il dropdown del carrello */
+.cart-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 240px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  z-index: 200;
+  margin-top: 10px;
+  /* Non nascondete più per default - viene controllato da React */
+  /* display: none; */
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Rimuovo la regola dell'hover poiché ora il dropdown è controllato da React */
+/* .cart-container:hover .cart-dropdown {
+  display: block;
+  animation: fadeIn 0.3s ease forwards;
+} */
+
+.cart-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  background: white;
+  transform: rotate(45deg);
+}
+
+.cart-summary {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-summary p {
+  margin: 0;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.cart-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.view-cart-btn, .checkout-btn {
+  display: block;
+  text-align: center;
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s;
+  text-decoration: none;
+  border: none;
+}
+
+.view-cart-btn {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.view-cart-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.checkout-btn {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.checkout-btn:hover {
+  background-color: #3a80d2;
+}
+
+/* Stile per il badge dei messaggi */
+.message-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 0.75rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-link {
+  position: relative;
+}
+
+.notification-center-container {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
+}
+
+.notification-center-container .notification-center {
+  display: block;
+  width: 100%;
+}
+
+.notification-center-container .notification-bell-button {
+  color: #333;
+  font-size: 1.2rem;
+  padding: 5px !important;
+  width: 100%;
+  position: relative;
+}
+
+.notification-bell-active {
+  color: #ff3b30 !important;
+}
+
+.notification-badge {
+  position: absolute !important;
+  top: -8px !important;
+  right: 0 !important;
+  transform: translate(30%, -30%) !important;
+  border: 2px solid white !important;
+  font-size: 0.75rem !important;
+  font-weight: bold !important;
+  padding: 0.25rem 0.4rem !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3) !important;
+  z-index: 1000 !important;
+  background-color: #ff3b30 !important;
+}
+
+.user-icon-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.user-notification-indicator {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 12px;
+  height: 12px;
+  background-color: #ff3b30;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 8px rgba(255, 59, 48, 0.8);
+  animation: pulse 1.5s infinite;
+  z-index: 101;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.8);
+  }
+  
+  50% {
+    transform: scale(1.3);
+    box-shadow: 0 0 10px 2px rgba(255, 59, 48, 0.4);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
+  }
+}
+
+.notification-bell-item {
+  margin-right: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.notification-bell-button {
+  margin: 0 !important;
+}
+
+.notification-bell-active {
+  color: #ff3b30 !important;
+}
+
+.notification-badge {
+  position: absolute !important;
+  transform: translate(40%, -40%) !important;
+  border: 2px solid white !important;
+  font-size: 0.75rem !important;
+  font-weight: bold !important;
+  padding: 0.25rem 0.4rem !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3) !important;
+  z-index: 1000 !important;
+} 

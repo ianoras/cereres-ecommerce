@@ -1,0 +1,133 @@
+/* Variabili colori */
+:root {
+    --color-primary: #D2B48C; /* Tonalità terracotta/naturale */
+    --color-secondary: #A9A684; /* Verde oliva chiaro */
+    --color-accent: #5D4037; /* Marrone scuro */
+    --color-background: #F5F5F0; /* Bianco crema */
+    --color-text: #212121; /* Nero intenso */
+    --color-text-light: #767676; /* Grigio per testi secondari */
+    --color-border: #E0E0E0; /* Bordi leggeri */
+    --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --transition-standard: all 0.3s ease;
+}
+
+/* Reset e stili base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-standard);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Container standard */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Utilità */
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    font-size: 2.5rem;
+    color: var(--color-text);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--color-primary);
+    margin: 0.5rem auto 0;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    border: 2px solid var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: #c0a378;
+    border-color: #c0a378;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-light {
+    background-color: white;
+    color: var(--color-accent);
+    border: 2px solid white;
+}
+
+.btn-light:hover {
+    background-color: #f8f9fa;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Media queries generali */
+@media (max-width: 576px) {
+    section {
+        padding: 3rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+} 
