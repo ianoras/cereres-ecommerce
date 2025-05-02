@@ -13,6 +13,7 @@
   color: white;
   font-weight: 500;
   transition: all 0.3s ease;
+  
 }
 
 .back-to-home:hover {
@@ -27,4 +28,17 @@
 
 .back-to-home span {
   font-size: 1rem;
+}
+
+@media (max-width: 576px) {
+  .back-to-home {
+    top: 15px;
+    left: 15px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .back-to-home svg {
+    font-size: 1rem;
+  }
 } 

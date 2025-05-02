@@ -3,6 +3,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  padding-top: 80px; /* Aggiunto spazio per la navbar */
 }
 
 /* Hero Section */
@@ -18,6 +19,13 @@
   color: white;
   margin-bottom: 60px;
   border-radius: 8px;
+  margin-top: 20px; /* Spazio aggiuntivo tra navbar e hero */
+}
+
+.customization-hero .hero-content {
+  padding: 20px;
+  position: relative;
+  z-index: 2; /* Assicura che il contenuto sia sopra lo sfondo */
 }
 
 .customization-hero .hero-content h1 {
@@ -325,6 +333,7 @@
 @media (max-width: 576px) {
   .customization-container {
     padding: 0 15px;
+    padding-top: 90px; /* Aumentato padding top per dispositivi piccoli */
   }
   
   .customization-section {
@@ -332,16 +341,29 @@
   }
   
   .customization-hero {
-    height: 250px;
+    height: 280px; /* Aumentata altezza per dare più spazio */
     margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrato verticalmente */
+  }
+  
+  .customization-hero .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spazio tra titolo e sottotitolo */
   }
   
   .customization-hero .hero-content h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 0; /* Rimosso margine per usare gap */
+    line-height: 1.3;
   }
   
   .customization-hero .subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 0 10px;
   }
   
   .intro-text p {

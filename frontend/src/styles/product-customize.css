@@ -8,7 +8,7 @@ body, html {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  padding-top: 7rem; /* Spazio per la navbar */
+  padding-top: 80px; /* Adattato per evitare sovrapposizioni */
   overflow-x: hidden; /* Previene overscrolling orizzontale */
   box-sizing: border-box;
 }
@@ -19,12 +19,15 @@ body, html {
   margin-bottom: 2rem;
   border-bottom: 1px solid #eee;
   padding-bottom: 1rem;
+  padding-top: 20px; /* Aggiunto padding in alto */
 }
 
 .customize-header h1 {
   font-size: 1.8rem;
   margin: 1rem 0;
   color: #333;
+  position: relative; /* Aggiunto per posizionare il titolo in modo relativo */
+  z-index: 1; /* Assicura che il titolo sia sopra altri elementi */
 }
 
 .back-link {
@@ -35,6 +38,8 @@ body, html {
   font-size: 0.9rem;
   transition: color 0.2s;
   width: fit-content;
+  position: relative; /* Aggiunto per posizionare il link in modo relativo */
+  z-index: 1; /* Assicura che il link sia sopra altri elementi */
 }
 
 .back-link:hover {
@@ -444,13 +449,21 @@ body, html {
 
 @media (max-width: 576px) {
   .customize-container {
-    padding: 1rem;
-    padding-top: 6rem;
-    width: 100%;
+    padding-top: 90px; /* Aumentato il padding per dispositivi più piccoli */
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
   
   .customize-header h1 {
     font-size: 1.5rem;
+    margin-top: 1.5rem; /* Aumentato il margine superiore */
+    margin-bottom: 1.5rem; /* Aggiunto margine inferiore */
+    line-height: 1.3; /* Migliorato l'interlinea */
+    padding-top: 10px; /* Aggiunto padding sopra il titolo */
+  }
+  
+  .customize-header .back-link {
+    margin-bottom: 1rem; /* Maggiore separazione tra il link e il titolo */
   }
   
   .product-summary,

@@ -124,11 +124,17 @@
   margin-bottom: 1.5rem;
 }
 
-.product-description {
+.product-detail-container .product-description {
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--color-text);
   margin-bottom: 2rem;
+  white-space: pre-wrap;
+  overflow: visible;
+  display: block;
+  -webkit-line-clamp: initial; /* Annulla il troncamento */
+  line-clamp: initial;
+  -webkit-box-orient: initial;
 }
 
 /* Caratteristiche prodotto */
@@ -476,4 +482,5 @@
 
 .quantity-controls input[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 } 

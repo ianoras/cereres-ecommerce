@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  padding-top: 80px;
   background-color: white;
   position: relative;
 }
@@ -205,4 +206,16 @@
 
 .mt-3 {
   margin-top: 1rem;
+}
+
+@media (max-width: 576px) {
+  .auth-container {
+    padding: 1rem;
+    padding-top: 90px;
+    justify-content: flex-start;
+  }
+
+  .auth-card {
+    margin-top: 20px;
+  }
 } 

@@ -144,28 +144,6 @@ const ProductDetail = () => {
             {product.description}
           </div>
           
-          <div className="product-features">
-            <div className="feature-item">
-              <FontAwesomeIcon icon={faShippingFast} />
-              <span>Spedizione in 3-5 giorni lavorativi</span>
-            </div>
-            <div className="feature-item">
-              <FontAwesomeIcon icon={faCheck} />
-              <span>Prodotto artigianale di alta qualità</span>
-            </div>
-            {product.inStock ? (
-              <div className="feature-item in-stock">
-                <FontAwesomeIcon icon={faCheck} />
-                <span>Disponibile</span>
-              </div>
-            ) : (
-              <div className="feature-item out-of-stock">
-                <FontAwesomeIcon icon={faCheck} />
-                <span>Non disponibile</span>
-              </div>
-            )}
-          </div>
-          
           {product.customizationOptions && product.customizationOptions.length > 0 && (
             <div className="customization-options">
               <h3>Opzioni di personalizzazione disponibili:</h3>
